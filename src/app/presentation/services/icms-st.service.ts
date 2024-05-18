@@ -4,7 +4,7 @@ import { CalculateIcmsStUsecase } from '../../core/domain/usecases/calculate-icm
 import { Product } from '../../core/domain/models/product.model';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class IcmsStService {
   constructor(private calculateIcmsStUsecase: CalculateIcmsStUsecase) {}

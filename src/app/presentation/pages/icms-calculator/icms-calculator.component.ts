@@ -6,7 +6,7 @@ import { IcmsStService } from '../../services/icms-st.service';
 @Component({
   selector: 'app-icms-calculator',
   templateUrl: './icms-calculator.component.html',
-  styleUrls: ['./icms-calculator.component.css'],
+  styleUrls: ['./icms-calculator.component.css']
 })
 export class IcmsCalculatorComponent implements OnInit {
   products: Product[] = [
@@ -21,20 +21,20 @@ export class IcmsCalculatorComponent implements OnInit {
       frete: 25,
       seguro: 10,
       despesasAcessorias: 30,
-      desconto: 0,
+      desconto: 0
     },
     {
       id: 2,
       name: 'Produto do Felipe',
       valorOperacao: 61,
-      aliquotaOrigem: 7,
-      mva: 53.86,
-      aliquotaDestino: 7,
+      mva: 51,
+      aliquotaOrigem: 18,
+      aliquotaDestino: 20.5,
       frete: 0,
       seguro: 0,
       despesasAcessorias: 0,
       aliquotaIpi: 0,
-      desconto: 0,
+      desconto: 0
     },
     {
       id: 3,
@@ -47,7 +47,7 @@ export class IcmsCalculatorComponent implements OnInit {
       seguro: 30,
       despesasAcessorias: 90,
       aliquotaIpi: 30,
-      desconto: 0,
+      desconto: 0
     },
     {
       id: 4,
@@ -60,7 +60,7 @@ export class IcmsCalculatorComponent implements OnInit {
       seguro: 40,
       despesasAcessorias: 120,
       aliquotaIpi: 40,
-      desconto: 0,
+      desconto: 0
     },
     {
       id: 5,
@@ -73,11 +73,11 @@ export class IcmsCalculatorComponent implements OnInit {
       seguro: 50,
       despesasAcessorias: 150,
       aliquotaIpi: 50,
-      desconto: 0,
-    },
+      desconto: 0
+    }
   ];
 
-  selectedProduct: Product = this.products[0];
+  selectedProduct: Product = this.products[1];
   valorIcmsSt!: number;
 
   constructor(private icmsStService: IcmsStService) {}
@@ -91,8 +91,6 @@ export class IcmsCalculatorComponent implements OnInit {
   }
 
   calcularIcmsSt() {
-    this.valorIcmsSt = this.icmsStService.calcularValorIcmsStARecolher(
-      this.selectedProduct
-    );
+    this.valorIcmsSt = this.icmsStService.calcularValorIcmsStARecolher(this.selectedProduct);
   }
 }

@@ -3,12 +3,13 @@
   max-width: 800px;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: #343a40;
 }
 
 p {
   font-size: 20px;
   margin-top: 0px;
-  margin-bottom: 8px;
+  margin-bottom: 0px;
 }

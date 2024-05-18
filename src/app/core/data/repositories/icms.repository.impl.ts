@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { IcmsRepository } from '../../domain/repositories/icms.repository';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class IcmsRepositoryImpl implements IcmsRepository {
   obterAliquotaIcmsOrigem(): number {

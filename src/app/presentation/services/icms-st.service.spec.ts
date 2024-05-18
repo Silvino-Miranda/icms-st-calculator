@@ -12,14 +12,13 @@ describe('IcmsStService', () => {
     const spy = jasmine.createSpyObj('CalculateIcmsStUsecase', ['executar']);
 
     TestBed.configureTestingModule({
-      providers: [
-        IcmsStService,
-        { provide: CalculateIcmsStUsecase, useValue: spy }
-      ]
+      providers: [IcmsStService, { provide: CalculateIcmsStUsecase, useValue: spy }]
     });
 
     service = TestBed.inject(IcmsStService);
-    mockCalculateIcmsStUsecase = TestBed.inject(CalculateIcmsStUsecase) as jasmine.SpyObj<CalculateIcmsStUsecase>;
+    mockCalculateIcmsStUsecase = TestBed.inject(
+      CalculateIcmsStUsecase
+    ) as jasmine.SpyObj<CalculateIcmsStUsecase>;
   });
 
   it('should be created', () => {

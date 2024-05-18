@@ -3,27 +3,48 @@ import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CalculateIcmsStUsecase {
   constructor() {}
 
-  executar(product: Product
-  ): number {
-
-    const { valorOperacao, mva, aliquotaOrigem, aliquotaDestino, frete, seguro, despesasAcessorias, desconto } = product;
+  executar(product: Product): number {
+    const {
+      valorOperacao,
+      mva,
+      aliquotaOrigem,
+      aliquotaDestino,
+      frete,
+      seguro,
+      despesasAcessorias,
+      desconto
+    } = product;
 
     // Passo 0: Calcular valor do IPI
     const valorIPI = this.calcularIPI(product.valorOperacao, product.aliquotaIpi);
 
     // Passo 1: Calcular base do ICMS Interestadual
-    const baseICMSInter = this.calcularBaseIcmsInter(valorOperacao, frete, seguro, despesasAcessorias, desconto);
+    const baseICMSInter = this.calcularBaseIcmsInter(
+      valorOperacao,
+      frete,
+      seguro,
+      despesasAcessorias,
+      desconto
+    );
 
     // Passo 2: Calcular valor do ICMS Interestadual
     const valorICMSInter = this.calcularIcmsInter(baseICMSInter, aliquotaOrigem);
 
     // Passo 3: Calcular base do ICMS-ST
-    const baseICMSST = this.calcularBaseIcmsSt(valorOperacao, valorIPI, frete, seguro, despesasAcessorias, desconto, mva);
+    const baseICMSST = this.calcularBaseIcmsSt(
+      valorOperacao,
+      valorIPI,
+      frete,
+      seguro,
+      despesasAcessorias,
+      desconto,
+      mva
+    );
 
     // Passo 4: Calcular valor do ICMS-ST
     const valorICMSST = this.calcularICMSST(baseICMSST, aliquotaDestino, valorICMSInter);
@@ -35,14 +56,19 @@ export class CalculateIcmsStUsecase {
     return valorOperacao * (aliquotaIPI / 100);
   }
 
-  calcularBaseIcmsInter(valorOperacao: number, frete: number, seguro: number, despesasAcessorias: number, descontos: number): number {
-    return (valorOperacao + frete + seguro + despesasAcessorias) - descontos;
+  calcularBaseIcmsInter(
+    valorOperacao: number,
+    frete: number,
+    seguro: number,
+    despesasAcessorias: number,
+    descontos: number
+  ): number {
+    return valorOperacao + frete + seguro + despesasAcessorias - descontos;
   }
 
- calcularIcmsInter(baseIcmsInter: number, aliquotaIcmsInter: number): number {
+  calcularIcmsInter(baseIcmsInter: number, aliquotaIcmsInter: number): number {
     return baseIcmsInter * (aliquotaIcmsInter / 100);
   }
-
 
   calcularBaseIcmsSt(
     valorOperacao: number,
@@ -53,13 +79,19 @@ export class CalculateIcmsStUsecase {
     descontos: number,
     mva: number
   ): number {
-    return (valorOperacao + valorIPI + frete + seguro + despesasAcessorias - descontos) * (1 + mva/100);
+    return (
+      (valorOperacao + valorIPI + frete + seguro + despesasAcessorias - descontos) * (1 + mva / 100)
+    );
   }
 
-    // Método para calcular o valor do ICMS-ST
-  calcularICMSST(baseICMSST: number, aliquotaICMSInterno: number, valorICMSInterestadual: number): number {
-      // Calcular o valor do ICMS-ST
-      const valorICMSST = (baseICMSST * (aliquotaICMSInterno / 100)) - valorICMSInterestadual;
-      return valorICMSST;
+  // Método para calcular o valor do ICMS-ST
+  calcularICMSST(
+    baseICMSST: number,
+    aliquotaICMSInterno: number,
+    valorICMSInterestadual: number
+  ): number {
+    // Calcular o valor do ICMS-ST
+    const valorICMSST = baseICMSST * (aliquotaICMSInterno / 100) - valorICMSInterestadual;
+    return valorICMSST;
   }
 }

@@ -3,7 +3,12 @@
   <h1 class="mb-4">Cálculo do ICMS ST</h1>
   <div class="form-group">
     <label for="products">Escolha um produto:</label>
-    <select id="products" class="form-control" [(ngModel)]="selectedProduct" (change)="onProductChange()">
+    <select
+      id="products"
+      class="form-control"
+      [(ngModel)]="selectedProduct"
+      (change)="onProductChange()"
+    >
       <option *ngFor="let product of products" [ngValue]="product">{{ product.name }}</option>
     </select>
   </div>
@@ -11,21 +16,24 @@
   <div *ngIf="selectedProduct" class="mt-4">
     <h2>Detalhes do Produto</h2>
     <p><strong>Nome:</strong> {{ selectedProduct.name }}</p>
-    <p><strong>Valor da Operação:</strong> {{ selectedProduct.valorOperacao | currency:'BRL' }}</p>
+    <p><strong>Valor da Operação:</strong> {{ selectedProduct.valorOperacao | currency: 'BRL' }}</p>
 
     <p><strong>MVA:</strong> {{ selectedProduct.mva }}%</p>
     <p><strong>IPI:</strong> {{ selectedProduct.aliquotaIpi }}%</p>
     <p><strong>Alíquota de Destino:</strong> {{ selectedProduct.aliquotaDestino }}%</p>
     <p><strong>Alíquota de Origem:</strong> {{ selectedProduct.aliquotaOrigem }}%</p>
 
-    <p><strong>Desconto</strong>  {{ selectedProduct.desconto | currency: 'BRL' }}</p>
-    <p><strong>Frete:</strong> {{ selectedProduct.frete | currency:'BRL' }}</p>
-    <p><strong>Seguro:</strong> {{ selectedProduct.seguro | currency:'BRL' }}</p>
-    <p><strong>Despesas Acessórias:</strong> {{ selectedProduct.despesasAcessorias | currency:'BRL' }}</p>
+    <p><strong>Desconto</strong> {{ selectedProduct.desconto | currency: 'BRL' }}</p>
+    <p><strong>Frete:</strong> {{ selectedProduct.frete | currency: 'BRL' }}</p>
+    <p><strong>Seguro:</strong> {{ selectedProduct.seguro | currency: 'BRL' }}</p>
+    <p>
+      <strong>Despesas Acessórias:</strong>
+      {{ selectedProduct.despesasAcessorias | currency: 'BRL' }}
+    </p>
   </div>
 
   <div class="mt-4">
     <h2>Cálculo do ICMS ST</h2>
-    <p><strong>Valor do ICMS ST a Recolher:</strong> {{ valorIcmsSt | currency:'BRL' }}</p>
+    <p><strong>Valor do ICMS ST a Recolher:</strong> {{ valorIcmsSt | currency: 'BRL' }}</p>
   </div>
 </div>

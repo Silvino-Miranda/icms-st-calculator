@@ -8,6 +8,6 @@ const routes: Routes = [{ path: '', component: IcmsCalculatorComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes), CommonModule, FormsModule],
-  declarations: [IcmsCalculatorComponent],
+  declarations: [IcmsCalculatorComponent]
 })
 export class IcmsCalculatorModule {}
