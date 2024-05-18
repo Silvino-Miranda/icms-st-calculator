@@ -7,10 +7,11 @@ indent_style = space
 indent_size = 2
 insert_final_newline = true
 trim_trailing_whitespace = true
-
-[*.ts]
-quote_type = single
+end_of_line = lf
+files.insertFinalNewline = true
+files.trimFinalNewlines = true
+editor.minimap.maxColumn = 110
 
 [*.md]
 max_line_length = off
-trim_trailing_whitespace = false
+trim_trailing_whitespace = true

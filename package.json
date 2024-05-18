@@ -6,7 +6,19 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "build:wba": "ng build --configuration production --aot --base-href / --stats-json",
+    "build:analyzer": "npx webpack-bundle-analyzer dist/opcoes/stats.json",
+    "test": "ng test",
+    "test:docker": "ng test --watch=false --browsers ChromeHeadless",
+    "test:common": "ng test --browsers Chrome,Firefox",
+    "test:ci": "ng test --watch=true --reporters junit --browsers ChromeHeadless",
+    "test:cov": "ng test --watch=true --browsers ChromeHeadless",
+    "lint": "ng lint",
+    "eslint:init": "eslint --init",
+    "eslint": "eslint . --ext .ts",
+    "eslint:fix": "eslint . --ext .ts --fix",
+    "e2e": "ng e2e",
+    "format": "prettier --write ."
   },
   "private": true,
   "dependencies": {
@@ -18,6 +30,7 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "bootstrap": "^5.3.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
@@ -27,12 +40,24 @@
     "@angular/cli": "^17.3.7",
     "@angular/compiler-cli": "^17.3.0",
     "@types/jasmine": "~5.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^4.0.0",
     "jasmine-core": "~5.1.0",
+    "jasmine-spec-reporter": "~7.0.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "~3.0.3",
+    "karma-firefox-launcher": "^1.3.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.4.2"
+    "karma-junit-reporter": "^2.0.1",
+    "prettier": "^3.2.5",
+    "puppeteer": "^13.5.2",
+    "typescript": "~5.4.2",
+    "webpack-bundle-analyzer": "^4.4.2"
   }
 }

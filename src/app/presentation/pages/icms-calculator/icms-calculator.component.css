@@ -1,0 +1,14 @@
+/* src/app/presentation/pages/icms-calculator/icms-calculator.component.css */
+.container {
+  max-width: 800px;
+}
+
+h1, h2 {
+  color: #343a40;
+}
+
+p {
+  font-size: 20px;
+  margin-top: 0px;
+  margin-bottom: 8px;
+}
